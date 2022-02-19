@@ -1,0 +1,146 @@
+<!-- Name: Anushkha Singh -->
+<!-- Roll No.: 1901ME72 -->
+
+<!-- HTML code for the GUI -->
+<html>
+
+    <title>Marksheet Generator</title>
+    <meta charset="UTF-8">
+
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+
+        body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+        .alert {
+          padding: 15px;
+          background-color: #f44336;
+          color: white;
+          width: 500px;
+      }
+
+      .closebtn {
+          margin-left: 15px;
+          color: white;
+          font-weight: bold;
+          float: right;
+          font-size: 22px;
+          line-height: 20px;
+          cursor: pointer;
+          transition: 0.3s;
+      }
+
+      .closebtn:hover {
+          color: black;
+      }
+
+    </style>
+
+    <body class="w3-light-grey">
+
+        <div class = "w3-content" style="max-width:1400px">
+
+            <header class="w3-container w3-center w3-padding-32">
+                <h1><b>Marksheet Generator</b></h1>
+            </header>
+
+            <form class="w3-container w3-center" method="post" enctype=multipart/form-data >
+                
+                <table border=0 align="center">
+
+                    <tr>
+                        <td><br>Browse for masters_roll CSV</td>
+                        <td left-padding= 10><br>&nbsp;&nbsp;<input type="file" name="upload-file1" accept=".csv" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><br>Browse for Responses CSV</td>
+                        <td left-padding= 10><br>&nbsp;&nbsp;<input type="file" name="upload-file2"  accept=".csv" value=""></td>
+                    </tr>
+                    <tr>
+                        <div class= "form-group">
+                            <td><br><label>Marks for Correct Ans</label></td>
+                            <td left-padding= 10><br>&nbsp;&nbsp;<input  class="form-control" type="number"name="correct" id="correct" step="any"></td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class= "form-group">
+                            <td><br><label>-ve Marks for Wrong Ans</label></td>
+                            <td left-padding= 10><br>&nbsp;&nbsp;<input  class="form-control" type="number" step="any" max ="0" name="wrong"></td>
+                        </div>
+                    </tr>
+
+                </table>
+                <br>
+
+                <table border=0 align="center">
+
+                    <tr>
+                        <td align="center">
+                            <div>
+                                <input type=submit name = "action" value= "Generate Roll number wise Marksheet">
+                            </div>
+                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert" align="center">
+                                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                                <span>{{message}}</span>
+                            </div>
+                            <br>
+                            {% endfor %}
+                            {% endif %}
+                            {% endwith %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <div>
+                                <input type=submit name = "action" value= "Generate Concise Marksheet with Roll Num, Obtained Marks, marks after negative">
+                            </div>
+                            <br>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="center">
+                            <div>
+                                <input type=submit name = "action" value= "Send Email">
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </form>
+
+        </div>
+
+        <script type="text/javascript">
+
+            function checkIsPositive(e) {
+          
+                const value = parseFloat(e.target.value);
+
+                if (e.target.value === "" || value > 0) {
+                    e.target.setCustomValidity("");
+                } else {
+                    e.target.setCustomValidity("Please select a value that is greater than 0.");
+                }
+            }
+
+            document.getElementById("correct").addEventListener("input", checkIsPositive, false);
+
+        </script>
+
+    </body>
+
+</html>
