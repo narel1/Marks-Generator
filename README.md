@@ -6,6 +6,7 @@ We would be given input file in .csv format and in output for each candidiate we
 that will contain information for marks before and after negative and we will email each candidates on their instution mail address.
 # Technologies used
 HTML,TeX,Python,Flask,Javascript,CSS,JS
+# Credits 
 This project involved group of 3 students with good team work and it gave me an oppurtunity to learn and gave me chnace to explore and get
 my hands on new skills.
 To resolve the manual calculation of xlsx file of candidate involving positive and negative score this project is all about.
